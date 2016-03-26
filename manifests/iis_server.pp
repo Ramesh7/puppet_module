@@ -9,7 +9,7 @@ class puppet_module::iis_server{
     source   => "puppet:///modules/puppet_module/iisexpress_1_11_x86_en-US.msi",
     owner    => "Administrators",
     group    => "Administrators",
-    mode     => 0770, 
+    mode     => "0770", 
     provider => windows,
     ensure   => present,
     require  => File["C:\GTechConfigFiles"],
