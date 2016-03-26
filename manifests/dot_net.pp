@@ -22,7 +22,7 @@ class puppet_module::dot_net {
     # creates  => "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\MSBuild\\Microsoft.Build.Core.xsd",
     timeout  => 1800,
     provider => powershell,
-    require  => package["Dot Net Installer"],
+    require  => File["Dot Net Installer"],
   }
 
 }
