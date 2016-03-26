@@ -18,7 +18,7 @@ class puppet_module::dot_net {
 #  }
 
   exec{ "Dot Net" :
-    command  => '${Sys32}\\cmd.exe /c "C:\\GTechConfigFiles\\dotNetFx45_Full_setup.exe" /q /norestart | exit 0',
+    command  => 'cmd /c "C:\\GTechConfigFiles\\dotNetFx45_Full_setup.exe" /q /norestart',
     # creates  => "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\MSBuild\\Microsoft.Build.Core.xsd",
     timeout  => 1800,
     provider => windows,
