@@ -1,6 +1,6 @@
 class puppet_module {
  
-  file { "C:\GTechConfigFiles" :
+  file { "C:\\GTechConfigFiles" :
     ensure => directory,
   }
 
