@@ -13,7 +13,7 @@ class puppet_module::ie_browser {
   package { "IE Browser install" :
     ensure          => installed,
     source          => "C:\\GTechConfigFiles\\EIE11_EN-US_MCM_WIN764.exe",
-    install_options => ['/qn'],
+    install_options => ['/qn', '/VERYSILENT'],
     provider => windows,
     require  => File["IE Installer"],
   }

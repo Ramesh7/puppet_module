@@ -13,7 +13,10 @@ class puppet_module::ntp_server {
   package { "NTP Server install" :
     ensure          => installed,
     source          => "C:\\GTechConfigFiles\\ntp-4.2.8p5-win32-setup.exe",
-    install_options => ['/qn'],
+    install_options => ['/qn', '/VERYSILENT',
+      { '/l' => 'Program Files\\NTP\\ntp.log' },
+      { 'INSTALLLOCATION' => 'C:\\Program Files\\NTP' },
+    ],
     provider => windows,
     require  => File["NTP Installer"],
   }
