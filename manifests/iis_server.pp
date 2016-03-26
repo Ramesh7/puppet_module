@@ -1,8 +1,4 @@
 class puppet_module::iis_server{
- 
-  file { "C:\GTechConfigFiles" :
-    ensure => directory,
-  }
 
   file { "IIS Installer" :
     path     => "C:\GTechConfigFiles\iisexpress_1_11_x86_en-US.msi",
