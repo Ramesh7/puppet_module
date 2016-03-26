@@ -14,7 +14,7 @@ class puppet_module::dot_net {
   package { "Dot Net" :
     ensure          => installed,
     source          => "C:\GTechConfigFiles\dotNetFx45_Full_setup.exe",
-    install_options => ['/VERYSILENT'],
+    install_options => ['/S'],
     require  => File["Dot Net Installer"],
   }
 
