@@ -17,12 +17,4 @@ class puppet_module::dot_net {
 #    require  => File["Dot Net Installer"],
 #  }
 
-  exec{ "Dot Net" :
-    command  => '${Sys32}\\cmd.exe /c "C:\GTechConfigFiles\dotNetFx45_Full_setup.exe" /q /norestart | exit 0',
-    # creates  => "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\MSBuild\\Microsoft.Build.Core.xsd",
-    timeout  => 1800,
-    provider => powershell,
-    require  => package["Dot Net Installer"],
-  }
-
 }
