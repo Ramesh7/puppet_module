@@ -1,4 +1,4 @@
-class iis_server{
+class puppet_module::iis_server{
  
   # install iis server
   package { "IIS 7.5 Express":

@@ -1,3 +1,3 @@
 class puppet_module {
-  include iis_server	
+  include puppet_module::iis_server	
 }
