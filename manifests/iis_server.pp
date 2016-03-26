@@ -23,10 +23,4 @@ class puppet_module::iis_server{
     require  => File['IIS Installer'],
   }
 
-  file { 'IIS Installer Remove':
-    path    => 'C:\GTechConfigFiles\iisexpress_1_11_x86_en-US.msi',
-    ensure => absent,
-    require  => Package['IIS 7.5 Express'],
-  }
-
 }
