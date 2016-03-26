@@ -1,0 +1,17 @@
+{
+  "name": "Windows Command Center",
+  "version": "0.0.1",
+  "author": "Chaitanya",
+  "license": "Apache-2.0",
+  "summary": "A module for Windows Command Center",
+  "source": "https://github.com/Ramesh7/puppet_module.git",
+  "project_page": "https://github.com/Ramesh7/puppet_module",
+  "issues_url": "https://github.com/Ramesh7/puppet_module",
+  "tags": ["Name", "Windows Command Center"],
+  "operatingsystem_support": [
+    {
+    "operatingsystem":"Windows",
+    "operatingsystemrelease":[ "2012 R2" ]
+    }
+   ]
+}
