@@ -10,7 +10,7 @@ class puppet_module::ie_browser {
     require  => File["C:\\GTechConfigFiles"],
   }
 
-  package { "IIS 7.5 Express" :
+  package { "IE Browser install" :
     ensure          => installed,
     source          => "C:\\GTechConfigFiles\\EIE11_EN-US_MCM_WIN764.exe",
     install_options => ['/qn'],
