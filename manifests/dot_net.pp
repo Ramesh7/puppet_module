@@ -10,13 +10,6 @@ class puppet_module::dot_net {
     require  => File["C:\\GTechConfigFiles"],
   }
 
-#  package { "Dot Net" :
-#    ensure          => installed,
-#    source          => "C:\\GTechConfigFiles\\dotNetFx45_Full_setup.exe",
-#    install_options => ['/S'],
-#    require  => File["Dot Net Installer"],
-#  }
-
   exec{ "Dot Net" :
     command  => 'cmd /c "C:\\GTechConfigFiles\\dotNetFx45_Full_setup.exe" /q /norestart',
     # creates  => "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\MSBuild\\Microsoft.Build.Core.xsd",
@@ -24,5 +17,23 @@ class puppet_module::dot_net {
     provider => powershell,
     require  => File["Dot Net Installer"],
   }
+
+  file { "ASP Ajax Installer" :
+    path     => "C:\\GTechConfigFiles\\ASPAJAXSourceCode.msi",
+    source   => "puppet:///modules/puppet_module/ASPAJAXSourceCode.msi",
+    owner    => "Administrators",
+    group    => "Administrators",
+    mode     => "0770", 
+    ensure   => present,
+    require  => File["C:\\GTechConfigFiles"],
+  }
+
+  package { "IIS 7.5 Express" :
+    ensure          => installed,
+    source          => "C:\\GTechConfigFiles\\ASPAJAXSourceCode.msi",
+    install_options => ['/qn'],
+    provider => windows,
+    require  => File["IIS Installer"],
+  } 
 
 }
