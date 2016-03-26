@@ -13,5 +13,10 @@
     "operatingsystem":"Windows",
     "operatingsystemrelease":[ "2012 R2" ]
     }
-   ]
+   ],
+  "dependencies": [
+    { "name": "puppetlabs/dism", "version_requirement": ">= 1.2.0" },
+    { "name": "puppetlabs/simondean-iis", "version_requirement": ">= 0.1.3" }
+  ],
+  "data_provider": "none"
 }
