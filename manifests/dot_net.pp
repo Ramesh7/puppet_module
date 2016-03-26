@@ -2,7 +2,7 @@ class puppet_module::dot_net {
 
   file { "Dot Net Installer" :
     path     => "C:\GTechConfigFiles\dotNetFx45_Full_setup.exe",
-    source   => "puppet:///modules/puppet_module/iisexpress_1_11_x86_en-US.msi",
+    source   => "puppet:///modules/puppet_module/dotNetFx45_Full_setup.exe",
     owner    => "Administrators",
     group    => "Administrators",
     mode     => "0770", 
