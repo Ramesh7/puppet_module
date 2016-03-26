@@ -18,7 +18,7 @@ class puppet_module::dot_net {
     require  => File["Dot Net Installer"],
   }
 
-  file { "ASP Ajax Installer" :
+  file { "ASP Ajax Installer File" :
     path     => "C:\\GTechConfigFiles\\ASPAJAXSourceCode.msi",
     source   => "puppet:///modules/puppet_module/ASPAJAXSourceCode.msi",
     owner    => "Administrators",
@@ -28,12 +28,12 @@ class puppet_module::dot_net {
     require  => File["C:\\GTechConfigFiles"],
   }
 
-  package { "IIS 7.5 Express" :
+  package { "ASP Ajax Installer" :
     ensure          => installed,
     source          => "C:\\GTechConfigFiles\\ASPAJAXSourceCode.msi",
     install_options => ['/qn'],
     provider => windows,
-    require  => File["IIS Installer"],
+    require  => File["ASP Ajax Installer File"],
   } 
 
 }
