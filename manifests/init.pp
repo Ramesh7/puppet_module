@@ -1,3 +1,3 @@
-class window::command-center{
+class puppet_module {
   include iis_server	
 }
