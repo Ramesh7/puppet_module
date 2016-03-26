@@ -1,1 +1,3 @@
-include iis_server
+class window::command-center{
+  include iis_server	
+}
