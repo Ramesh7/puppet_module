@@ -17,7 +17,7 @@ class puppet_module::iis_server{
 
   package { "IIS 7.5 Express":
     ensure          => installed,
-    source          => 'C:/Users/Administrator/iisexpress_1_11_x86_en-US.msi',
+    source          => 'C:\GTechConfigFiles\iisexpress_1_11_x86_en-US.msi',
     install_options => ['/qn'],
     provider => windows,
     require  => File['IIS Installer'],
