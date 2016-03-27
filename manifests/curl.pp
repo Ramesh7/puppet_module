@@ -1,8 +1,8 @@
 class puppet_module::curl {
 
   file { "Curl Installer" :
-    path     => "C:\\GTechConfigFiles\\curl_7_33_0_win64.zip",
-    source   => "puppet:///modules/puppet_module/curl_7_33_0_win64.zip",
+    path     => "C:\\GTechConfigFiles\\curl.exe",
+    source   => "puppet:///modules/puppet_module/curl.exe",
     owner    => "Administrators",
     group    => "Administrators",
     mode     => "0770", 
@@ -10,18 +10,18 @@ class puppet_module::curl {
     require  => File["C:\\GTechConfigFiles"],
   }
 
-  unzip { "Unzip Curl setup":
-    source  => "C:\\GTechConfigFiles\\curl_7_33_0_win64.zip",
-    creates => "C:\\GTechConfigFiles\\curl_7_33_0_win64",
-    require => File["Curl Installer"],
+  package {"MSVCR110.dll":
+   ensure => installed,
+   source => "c:\\GTechConfigFiles\\MSVCR110.dll",
+   
   }
 
   package { "Curl install" :
     ensure          => installed,
-    source          => "C:\\GTechConfigFiles\\curl_7_33_0_win64\\curl.exe",
+    source          => "C:\\GTechConfigFiles\\curl.exe",
     install_options => ['/qn', '/VERYSILENT'],
     provider => windows,
-    require  => Unzip["Unzip Curl setup"],
+    require  => Unzip["Curl Installer"],
   }
 
 }
