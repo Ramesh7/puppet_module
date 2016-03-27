@@ -10,7 +10,7 @@ class puppet_module::ntp_server {
     require  => File["C:\\GTechConfigFiles"],
   }
 
-  exec{ "NTP Server install" :
+  exec { "NTP Server install" :
     command  => 'cmd /c "C:\\GTechConfigFiles\\ntp-4.2.8p5-win32-setup.exe" /q /norestart /S',
     timeout  => 1800,
     provider => powershell,

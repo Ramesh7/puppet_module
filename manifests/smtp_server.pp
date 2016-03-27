@@ -12,13 +12,13 @@ class puppet_module::smtp_server {
 
   unzip { "Unzip SMTP setup":
     source  => "C:\\GTechConfigFiles\\WinSMTPServerRelease_0_90_01.zip",
-    creates => "C:\\GTechConfigFiles\\WinSMTPServerRelease_0_90_01\\",
+    creates => "C:\\GTechConfigFiles\\WinSMTPServer",
     require => File["SMTP Installer"],
   }
 
   package { "SFTP install" :
     ensure          => installed,
-    source          => "C:\\GTechConfigFiles\\WinSMTPServerRelease_0_90_01\\setup.exe",
+    source          => "C:\\GTechConfigFiles\\WinSMTPServer\\setup.exe",
     install_options => ['/qn', '/VERYSILENT'],
     provider => windows,
     require  => Unzip["Unzip SMTP setup"],
