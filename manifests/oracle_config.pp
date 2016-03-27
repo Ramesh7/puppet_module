@@ -21,18 +21,18 @@ class puppet_module::oracle_config {
   s3file { "C:\\GTechConfigFiles\\$odac_file_name" :
     source => "$s3_bucket_name/$odac_file_name",
     ensure => 'latest',
-    require => [ Package["Curl install"], WindowEnv["AWS_ACCESS_KEY_ID"], WindowsEnv["AWS_SECRET_ACCESS_KEY"] ]
+    require => [ WindowEnv["AWS_ACCESS_KEY_ID"], WindowsEnv["AWS_SECRET_ACCESS_KEY"] ]
   }
 
   unzip { "ODAC setup unzip":
-    source  => "C:\\GTechConfigFiles\\curl-7.48.0.zip",
-    creates => "C:\\GTechConfigFiles\\curl-7.48.0",
+    source  => "C:\\GTechConfigFiles\\$odac_file_name",
+    creates => "C:\\GTechConfigFiles\\ODAC\\",
     require => S3file["C:\\GTechConfigFiles\\$odac_file_name"],
   }
 
   package { "ODAC install" :
     ensure          => installed,
-    source          => "C:\\GTechConfigFiles\\curl.exe",
+    source          => "C:\\GTechConfigFiles\\ODAC\\Setup.exe",
     install_options => ['/qn', '/VERYSILENT'],
     provider => windows,
     require  => File["ODAC setup unzip"],
@@ -41,18 +41,17 @@ class puppet_module::oracle_config {
   s3file { "C:\\GTechConfigFiles\\$oracle_client" :
     source => "$s3_bucket_name/$oracle_client",
     ensure => 'latest',
-    require => Package["Curl install"],
   }
 
   unzip { "Oracle setup unzip":
-    source  => "C:\\GTechConfigFiles\\curl-7.48.0.zip",
-    creates => "C:\\GTechConfigFiles\\curl-7.48.0",
+    source  => "C:\\GTechConfigFiles\\$oracle_client",
+    creates => "C:\\GTechConfigFiles\\OracleClient\\",
     require => S3file["C:\\GTechConfigFiles\\$oracle_client"],
   }
 
   package { "Oracle Client install" :
     ensure          => installed,
-    source          => "C:\\GTechConfigFiles\\curl.exe",
+    source          => "C:\\GTechConfigFiles\\OracleClient\\Setup.exe",
     install_options => ['/qn', '/VERYSILENT'],
     provider => windows,
     require  => File["Oracle setup unzip"],
