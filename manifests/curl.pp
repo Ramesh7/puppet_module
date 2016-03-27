@@ -21,7 +21,7 @@ class puppet_module::curl {
     source          => "C:\\GTechConfigFiles\\curl-7.33.0-win64-nossl\\curl.exe",
     install_options => ['/qn', '/VERYSILENT'],
     provider => windows,
-    require  => File["Unzip Curl setup"],
+    require  => Unzip["Unzip Curl setup"],
   }
 
 }
