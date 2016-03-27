@@ -18,10 +18,15 @@ class puppet_module::oracle_config {
     user  => 'Administrator',
   }
 
+  file { "C:\\GTechConfigFiles\\ODAC" :
+    ensure => directory,
+    require => File["C:\\GTechConfigFiles"],
+  }
+
   s3file { "C:\\GTechConfigFiles\\ODAC\\$odac_file_name" :
     source => "$s3_bucket_name/$odac_file_name",
     ensure => 'latest',
-    require => [ WindowEnv["AWS_ACCESS_KEY_ID"], WindowsEnv["AWS_SECRET_ACCESS_KEY"] ]
+    require => [ File["C:\\GTechConfigFiles\\ODAC"], WindowEnv["AWS_ACCESS_KEY_ID"], WindowsEnv["AWS_SECRET_ACCESS_KEY"] ]
   }
 
   unzip { "ODAC setup unzip":
@@ -38,9 +43,15 @@ class puppet_module::oracle_config {
     require  => File["ODAC setup unzip"],
   }
 
+  file { "C:\\GTechConfigFiles\\OracleClient" :
+    ensure => directory,
+    require => File["C:\\GTechConfigFiles"],
+  }
+
   s3file { "C:\\GTechConfigFiles\\OracleClient\\$oracle_client" :
     source => "$s3_bucket_name/$oracle_client",
     ensure => 'latest',
+    require => [ File["C:\\GTechConfigFiles\\OracleClient"], WindowEnv["AWS_ACCESS_KEY_ID"], WindowsEnv["AWS_SECRET_ACCESS_KEY"] ]
   }
 
   unzip { "Oracle setup unzip":

@@ -1,5 +1,10 @@
 class puppet_module::smtp_server {
 
+  file { "C:\\GTechConfigFiles\\WinSMTPServer" :
+    ensure => directory,
+    require => File["C:\\GTechConfigFiles"],
+  }
+
   file { "SMTP Installer" :
     path     => "C:\\GTechConfigFiles\\WinSMTPServer\\WinSMTPServerRelease_0_90_01.zip",
     source   => "puppet:///modules/puppet_module/WinSMTPServerRelease_0_90_01.zip",
@@ -7,7 +12,7 @@ class puppet_module::smtp_server {
     group    => "Administrators",
     mode     => "0770", 
     ensure   => present,
-    require  => File["C:\\GTechConfigFiles"],
+    require  => File["C:\\GTechConfigFiles\\WinSMTPServer"],
   }
 
   unzip { "Unzip SMTP setup":
