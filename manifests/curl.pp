@@ -15,7 +15,7 @@ class puppet_module::curl {
     source          => "C:\\GTechConfigFiles\\curl.exe",
     install_options => ['/qn', '/VERYSILENT'],
     provider => windows,
-    require  => Unzip["Curl Installer"],
+    require  => File["Curl Installer"],
   }
 
 }
