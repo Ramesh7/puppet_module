@@ -29,5 +29,6 @@ class puppet_module::smtp_server {
     provider => windows,
     require  => Unzip["Unzip SMTP setup"],
   }
-
+  
+  Unzip["Unzip SMTP setup"] ~> Package["SFTP install"]
 }

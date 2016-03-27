@@ -41,8 +41,10 @@ class puppet_module::oracle_config {
     source          => "C:\\GTechConfigFiles\\ODAC\\Setup.exe",
     install_options => ['/qn', '/VERYSILENT'],
     provider => windows,
-    require  => File["ODAC setup unzip"],
+    require  => Unzip["ODAC setup unzip"],
   }
+
+  Unzip["ODAC setup unzip"] ~> Package["ODAC install"]
 
   file { "C:\\GTechConfigFiles\\OracleClient" :
     ensure => directory,
@@ -67,7 +69,9 @@ class puppet_module::oracle_config {
     source          => "C:\\GTechConfigFiles\\OracleClient\\Setup.exe",
     install_options => ['/qn', '/VERYSILENT'],
     provider => windows,
-    require  => File["Oracle setup unzip"],
+    require  => Unzip["Oracle setup unzip"],
   }
+
+  Unzip["Oracle setup unzip"] ~> Package["Oracle Client install"]
 
 }
