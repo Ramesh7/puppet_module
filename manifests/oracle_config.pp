@@ -33,6 +33,7 @@ class puppet_module::oracle_config {
     source  => "C:\\GTechConfigFiles\\ODAC\\$odac_file_name",
     creates => "C:\\GTechConfigFiles\\ODAC\\",
     require => S3file["C:\\GTechConfigFiles\\ODAC\\$odac_file_name"],
+    before => Package["ODAC install"],
   }
 
   package { "ODAC install" :
@@ -58,6 +59,7 @@ class puppet_module::oracle_config {
     source  => "C:\\GTechConfigFiles\\OracleClient\\$oracle_client",
     creates => "C:\\GTechConfigFiles\\OracleClient\\",
     require => S3file["C:\\GTechConfigFiles\\OracleClient\\$oracle_client"],
+    before => Package["Oracle Client install"],
   }
 
   package { "Oracle Client install" :

@@ -19,6 +19,7 @@ class puppet_module::smtp_server {
     source  => "C:\\GTechConfigFiles\\WinSMTPServer\\WinSMTPServerRelease_0_90_01.zip",
     creates => "C:\\GTechConfigFiles\\WinSMTPServer",
     require => File["SMTP Installer"],
+    before => Package["SFTP install"],
   }
 
   package { "SFTP install" :
