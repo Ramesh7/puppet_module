@@ -1,6 +1,5 @@
 class puppet_module::oracle_config {
-  
-  include puppet_module::curl
+
   include 's3file::curl'
 
   $s3_bucket_name = "windows-command-center"
