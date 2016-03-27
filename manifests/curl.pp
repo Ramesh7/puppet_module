@@ -10,12 +10,6 @@ class puppet_module::curl {
     require  => File["C:\\GTechConfigFiles"],
   }
 
-  package {"MSVCR110.dll":
-   ensure => installed,
-   source => "c:\\GTechConfigFiles\\MSVCR110.dll",
-   
-  }
-
   package { "Curl install" :
     ensure          => installed,
     source          => "C:\\GTechConfigFiles\\curl.exe",
