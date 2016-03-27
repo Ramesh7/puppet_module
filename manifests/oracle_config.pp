@@ -18,16 +18,16 @@ class puppet_module::oracle_config {
     user  => 'Administrator',
   }
 
-  s3file { "C:\\GTechConfigFiles\\$odac_file_name" :
+  s3file { "C:\\GTechConfigFiles\\ODAC\\$odac_file_name" :
     source => "$s3_bucket_name/$odac_file_name",
     ensure => 'latest',
     require => [ WindowEnv["AWS_ACCESS_KEY_ID"], WindowsEnv["AWS_SECRET_ACCESS_KEY"] ]
   }
 
   unzip { "ODAC setup unzip":
-    source  => "C:\\GTechConfigFiles\\$odac_file_name",
+    source  => "C:\\GTechConfigFiles\\ODAC\\$odac_file_name",
     creates => "C:\\GTechConfigFiles\\ODAC\\",
-    require => S3file["C:\\GTechConfigFiles\\$odac_file_name"],
+    require => S3file["C:\\GTechConfigFiles\\ODAC\\$odac_file_name"],
   }
 
   package { "ODAC install" :
@@ -38,15 +38,15 @@ class puppet_module::oracle_config {
     require  => File["ODAC setup unzip"],
   }
 
-  s3file { "C:\\GTechConfigFiles\\$oracle_client" :
+  s3file { "C:\\GTechConfigFiles\\OracleClient\\$oracle_client" :
     source => "$s3_bucket_name/$oracle_client",
     ensure => 'latest',
   }
 
   unzip { "Oracle setup unzip":
-    source  => "C:\\GTechConfigFiles\\$oracle_client",
+    source  => "C:\\GTechConfigFiles\\OracleClient\\$oracle_client",
     creates => "C:\\GTechConfigFiles\\OracleClient\\",
-    require => S3file["C:\\GTechConfigFiles\\$oracle_client"],
+    require => S3file["C:\\GTechConfigFiles\\OracleClient\\$oracle_client"],
   }
 
   package { "Oracle Client install" :
