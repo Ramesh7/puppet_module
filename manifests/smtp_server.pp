@@ -1,4 +1,4 @@
-class puppet_module::smtp_config {
+class puppet_module::smtp_server {
 
   file { "SMTP Installer" :
     path     => "C:\\GTechConfigFiles\\WinSMTPServerRelease_0_90_01.zip",
