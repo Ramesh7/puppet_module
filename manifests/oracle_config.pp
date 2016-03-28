@@ -8,13 +8,13 @@ class puppet_module::oracle_config {
 
   windows_env { "AWS_ACCESS_KEY_ID" :
     ensure    => present,
-    value => 'AKIAJFKXLTF4RAPLSBXA',
+    value => 'AWS_ACCESS_KEY_ID',
     user  => 'Administrator',
   }
 
   windows_env { "AWS_SECRET_ACCESS_KEY" :
     ensure    => present,
-    value => 'wXpa/v5geZVGXdDTULysW0ddoD7fuRf3/ql0oHEu',
+    value => 'AWS_SECRET_ACCESS_KEY',
     user  => 'Administrator',
   }
 
