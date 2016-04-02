@@ -28,4 +28,8 @@ class puppet_module::ntp_server {
   #   require  => File["NTP Installer"],
   # }
 
+  service { "NTP" :
+    ensure => running,
+    require => Package['NTP Server install']
+  }
 }

@@ -34,5 +34,10 @@ class puppet_module::smtp_server {
     install_options => ['/qn'],
     provider => windows,
   }
+
+  service { "WinSMTPService" :
+    ensure => running,
+    require => Package['SFTP install']
+  }
   
 }

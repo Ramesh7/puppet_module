@@ -11,5 +11,5 @@ class puppet_module {
 #    include puppet_module::smtp_server
 #    include puppet_module::odac_client
 #   include puppet_module::oracle_config  
-
+#    include puppet_module::msmq
 }
