@@ -17,18 +17,22 @@ class puppet_module::smtp_server {
 
   unzip { "Unzip SMTP setup":
     source  => "C:\\GTechConfigFiles\\WinSMTPServer\\WinSMTPServerRelease_0_90_01.zip",
-    creates => "C:\\GTechConfigFiles\\WinSMTPServer",
+    creates => "C:\\GTechConfigFiles\\WinSMTPServer\\WinSMTPServerRelease_0_90_01",
     require => File["SMTP Installer"],
+    before => Package["SFTP install"],
+  }
+
+  exec { "Install .NET 3.5" :
+    command => 'cmd /c dism /online /enable-feature /featurename:NetFX3 /all /Source:c:\\sources\\sxs /LimitAccess',
+    provider => 'powershell',
     before => Package["SFTP install"],
   }
 
   package { "SFTP install" :
     ensure          => installed,
     source          => "C:\\GTechConfigFiles\\WinSMTPServer\\setup.exe",
-    install_options => ['/qn', '/VERYSILENT'],
+    install_options => ['/qn'],
     provider => windows,
-    require  => Unzip["Unzip SMTP setup"],
   }
   
-  Unzip["Unzip SMTP setup"] ~> Package["SFTP install"]
 }
