@@ -24,9 +24,9 @@ class puppet_module::msmq {
   #   provider => powershell
   # }    
 
-  # service { "MSMQ" :
-  #   ensure  => running,
-  #   require => [ Exec["MSMQ Enable"], Exec["MSMQ Services Enable"], Exec["MSMQ Server Enable"] ]   
-  # }
+  service { "MSMQ" :
+    ensure  => running,
+    require => Exec["Windows MSMQ Feature Install"]
+  }
 
 }
