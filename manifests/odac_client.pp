@@ -1,19 +1,25 @@
 class puppet_module::odac_client {
-	
-   file { "Copy odac_client resp" :
-    path     => "C:\\odac_oracle_client\\odac_client.rsp",
-    source   => "puppet:///modules/puppet_module/odac_client.rsp",
+
+  file { "C:\\CommandCenterInstaller\\ODACClient" :
+    ensure => directory,
+    require  => File["C:\\CommandCenterInstaller"],
+  }
+
+  file { "Copy odac_client resp" :
+    path     => "C:\\CommandCenterInstaller\\ODACClient\\ODACClientResponseFile.rsp",
+    source   => "puppet:///modules/puppet_module/ODACClientResponseFile.rsp",
     owner    => "Administrators",
     group    => "Administrators",
     mode     => "0770", 
     ensure   => present,
-    before  => exec["InstallOdac"],
+    require  => File["C:\\CommandCenterInstaller\\ODACClient"],
+    before  => exec["Install ODAC"],
   }
-     
-   exec { 'InstallOdac':
+
+   exec { 'Install ODAC':
      command   => '  
-       PUSHD C:\\odac_oracle_client\\
-       cmd /c setup.exe -silent -nowait -noconfig -responseFile "C:\\odac_oracle_client\\odac_client.rsp" 
+       PUSHD C:\\CommandCenterInstaller\\ODACClient\\
+       cmd /c setup.exe -silent -nowait -noconfig -responseFile "C:\\CommandCenterInstaller\\ODACClient\\ODACClientResponseFile.rsp" 
        Start-Sleep 700
        }
       ',

@@ -1,23 +1,23 @@
 class puppet_module::smtp_server {
 
-  file { "C:\\GTechConfigFiles\\WinSMTPServer" :
+  file { "C:\\CommandCenterInstaller\\WinSMTPServer" :
     ensure => directory,
-    require => File["C:\\GTechConfigFiles"],
+    require => File["C:\\CommandCenterInstaller"],
   }
 
   file { "SMTP Installer" :
-    path     => "C:\\GTechConfigFiles\\WinSMTPServer\\WinSMTPServerRelease_0_90_01.zip",
+    path     => "C:\\CommandCenterInstaller\\WinSMTPServer\\WinSMTPServerRelease_0_90_01.zip",
     source   => "puppet:///modules/puppet_module/WinSMTPServerRelease_0_90_01.zip",
     owner    => "Administrators",
     group    => "Administrators",
     mode     => "0770", 
     ensure   => present,
-    require  => File["C:\\GTechConfigFiles\\WinSMTPServer"],
+    require  => File["C:\\CommandCenterInstaller\\WinSMTPServer"],
   }
 
   unzip { "Unzip SMTP setup":
-    source  => "C:\\GTechConfigFiles\\WinSMTPServer\\WinSMTPServerRelease_0_90_01.zip",
-    creates => "C:\\GTechConfigFiles\\WinSMTPServer\\WinSMTPServerRelease_0_90_01",
+    source  => "C:\\CommandCenterInstaller\\WinSMTPServer\\WinSMTPServerRelease_0_90_01.zip",
+    creates => "C:\\CommandCenterInstaller\\WinSMTPServer\\WinSMTPServerRelease_0_90_01",
     require => File["SMTP Installer"],
     before => Package["SFTP install"],
   }
@@ -30,7 +30,7 @@ class puppet_module::smtp_server {
 
   package { "SFTP install" :
     ensure          => installed,
-    source          => "C:\\GTechConfigFiles\\WinSMTPServer\\setup.exe",
+    source          => "C:\\CommandCenterInstaller\\WinSMTPServer\\setup.exe",
     install_options => ['/qn'],
     provider => windows,
   }
@@ -39,5 +39,5 @@ class puppet_module::smtp_server {
     ensure => running,
     require => Package['SFTP install']
   }
-  
+
 }

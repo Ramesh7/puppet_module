@@ -1,6 +1,6 @@
 class puppet_module {
  
-  file { "C:\\GTechConfigFiles" :
+  file { "C:\\CommandCenterInstaller" :
     ensure => directory,
   }
 
