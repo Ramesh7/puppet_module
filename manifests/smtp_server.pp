@@ -22,6 +22,14 @@ class puppet_module::smtp_server {
     before => Package["SFTP install"],
   }
 
+  # Install SMTP Server windows feature
+  exec { "SMTP Server" :
+    command => 'Install-WindowsFeature -Name SMTP-Server',
+    timeout => 1200,
+    provider => powershell,
+    before => Package["SFTP install"]
+  }
+
   exec { "Install .NET 3.5" :
     command => 'cmd /c dism /online /enable-feature /featurename:NetFX3 /all /Source:c:\\sources\\sxs /LimitAccess',
     provider => 'powershell',

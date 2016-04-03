@@ -15,7 +15,13 @@ class puppet_module::dot_net {
     require  => File["C:\\CommandCenterInstaller\\dotNet"],
   }
 
-  exec{ "Dot Net" :
+  exec { "Enable ASP.NET 4.5" :
+    command => 'Install-WindowsFeature -Name Web-Asp-Net45',
+    provider => powershell.
+    before => Exec["Dot Net"],
+  }
+
+  exec { "Dot Net" :
     command  => 'cmd /c "C:\\CommandCenterInstaller\\dotNet\\dotNetFx45_Full_setup.exe" /q /norestart',
     # creates  => "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\MSBuild\\Microsoft.Build.Core.xsd",
     timeout  => 1800,
