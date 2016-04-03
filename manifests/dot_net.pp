@@ -17,7 +17,7 @@ class puppet_module::dot_net {
 
   exec { "Enable ASP.NET 4.5" :
     command => 'Install-WindowsFeature -Name Web-Asp-Net45',
-    provider => powershell.
+    provider => powershell,
     before => Exec["Dot Net"],
   }
 
