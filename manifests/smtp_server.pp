@@ -50,7 +50,7 @@ class puppet_module::smtp_server {
 
   service { "SMTPSVC" :
     ensure => running,
-    require => Package['SMTP Server']
+    require => Exec["SMTP Server"]
   }
 
 }
