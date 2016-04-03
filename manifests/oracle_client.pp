@@ -7,7 +7,7 @@ class puppet_module::oracle_client {
 
   file { "Copy oracle_client resp" :
     path     => "C:\\CommandCenterInstaller\\OracleClient\\OracleClientResponseFile.rsp",
-    source   => "puppet:///modules/puppet_module/odac_client.rsp",
+    source   => "puppet:///modules/puppet_module/OracleClientResponseFile.rsp",
     owner    => "Administrators",
     group    => "Administrators",
     mode     => "0770", 
