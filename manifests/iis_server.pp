@@ -23,9 +23,9 @@ class puppet_module::iis_server{
     require  => File["IIS Installer"],
   }
 
-  service { "IISADMIN" :
-    ensure => running,
-    require => Package['IIS 7.5 Express']
-  }
+  # service { "IISADMIN" :
+  #   ensure => running,
+  #   require => Package['IIS 7.5 Express']
+  # }
 
 }
