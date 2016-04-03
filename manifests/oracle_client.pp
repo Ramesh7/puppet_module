@@ -13,7 +13,7 @@ class puppet_module::oracle_client {
     mode     => "0770", 
     ensure   => present,
     require  => File["C:\\CommandCenterInstaller\\OracleClient"],
-    before  => exec["Install Oracle Client"]
+    before  => Exec["Install Oracle Client"]
   }
      
    exec { 'Install Oracle Client':
