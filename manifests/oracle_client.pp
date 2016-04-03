@@ -21,7 +21,6 @@ class puppet_module::oracle_client {
        PUSHD C:\\CommandCenterInstaller\\OracleClient
        cmd /c setup.exe -silent -nowait -noconfig -responseFile "C:\\CommandCenterInstaller\\OracleClient\\OracleClientResponseFile.rsp" 
        Start-Sleep 700
-       }
       ',
        creates => 'C:\\Oracle\\product\\12.1.0\\client_1\\network\\admin\\tnsnames.ora',
        timeout => 1200,
